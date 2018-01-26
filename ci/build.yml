@@ -1,0 +1,27 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: microsoft/dotnet
+    tag: '2-sdk'
+
+inputs:
+  - name: pal-tracker
+
+outputs:
+  - name: build-output
+
+run:
+  path: bash
+  args:
+  - -exc
+  - |
+  
+    mkdir -p build-output/src/PalTracker
+    cp pal-tracker/manifest.yml build-output
+    
+    dotnet test ./pal-tracker/test/PalTrackerTests
+
+    dotnet publish ./pal-tracker/src/PalTracker --configuration Release \
+      --output $(pwd)/build-output/src/PalTracker/bin/Release/netcoreapp2.0/publish
