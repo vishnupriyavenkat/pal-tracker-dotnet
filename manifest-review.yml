@@ -4,3 +4,5 @@ applications:
   buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack#v2.0.1
   path: src/PalTracker/bin/Release/netcoreapp2.0/publish/
   host: rf-pal-tracker-review
+  services:
+  - tracker-database
