@@ -30,3 +30,5 @@ msbuild.wrn
 .vscode
 
 ci/variables.yml
+cicdssh
+cicdssh.pub
